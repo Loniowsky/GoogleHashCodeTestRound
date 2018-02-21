@@ -3,6 +3,7 @@ CXXFLAGS+=-g
 CXXFLAGS+=-Wextra
 CXXFLAGS+=-pedantic
 CXXFLAGS+=-Wall
+CXXFLAGS+=-std=c++11
 MAIN=TestHash
 SRC=$(wildcard *.cpp)
 OBJ=$(SRC:.cpp=.o)
