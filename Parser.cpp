@@ -14,7 +14,7 @@ unsigned max = 0;
 #include <cstdlib>
 #include <string>
 
-std::vector<std::vector<bool>>& Parser ()
+std::vector<std::vector<bool>>* Parser ()
 {
 	std::ifstream inputFile ("medium.in");
 	if (!inputFile.is_open())
@@ -64,7 +64,7 @@ std::vector<std::vector<bool>>& Parser ()
 
 	//PrintVector(*ptrToVector, rows, columns);
 
-	return *ptrToVector;
+	return ptrToVector;
 	
 
 }

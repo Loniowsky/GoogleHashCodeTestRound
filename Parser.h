@@ -9,7 +9,7 @@ extern unsigned columns;
 extern unsigned min;
 extern unsigned max;
 
-std::vector<std::vector<bool>>& Parser ();
+std::vector<std::vector<bool>>* Parser ();
 
 
 
