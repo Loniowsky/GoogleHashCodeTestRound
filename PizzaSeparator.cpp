@@ -25,3 +25,18 @@ void PizzaSeparator::SlicePizza(){
 PizzaSeparator::~PizzaSeparator(){
 	delete toSlice;
 }
+
+
+bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
+{
+	for (int i=upperLeft.GetX(); i<=lowerRight.GetX(); ++i)
+	{
+		for (int j=lowerRight.GetY(); j<=upperLeft.GetY(); ++j)
+		{
+			if (isTaken[i][j]==true)
+				return false;
+		}
+	}
+
+	return true;
+}
