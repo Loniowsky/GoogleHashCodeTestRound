@@ -7,6 +7,8 @@ public:
 	int GetY() const {return m_y;}
 	bool IsValid();
 	void Print();
+	void SetX(const unsigned int x);
+	void SetY(const unsigned int y);
 private:
 	unsigned int m_x;
 	unsigned int m_y;
