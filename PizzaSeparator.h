@@ -10,6 +10,8 @@ class PizzaSeparator{
 		void SlicePizza();
 		Point FindStartingPoint();
 
+		bool IsValid(const Point& upperLeft, const Point& lowerRight);
+
 	private:
 		std::vector<Point> m_result;
 		std::vector<std::vector<bool>> isTaken;
