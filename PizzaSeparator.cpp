@@ -1,7 +1,9 @@
 #include "PizzaSeparator.h"
+#include "PrintVector.h"
 
 #include <iostream>
 #include "Point.h"
+#include "Parser.h"
 
 using namespace std;
 
@@ -19,9 +21,20 @@ void PizzaSeparator::SlicePizza(){
 	int actTom=0;
 	int actMus=0;
 
-	
+	Point startingP(FindStartingPoint());
+	if(!startingP.IsValid())return;
+	startingP.Print();
 }
 
 PizzaSeparator::~PizzaSeparator(){
 	delete toSlice;
+}
+
+Point PizzaSeparator::FindStartingPoint(){
+	for(unsigned int i = 0; i < rows; i++){
+		for(unsigned int j = 0 ; j < columns; j++){
+			if(isTaken[i][j]==0) return Point(i,j);
+		}
+	}
+	return Point(10000000,1000000);
 }

@@ -2,13 +2,13 @@
 
 #include <vector>
 #include "Point.h"
-#include "Parser.h"
 
 class PizzaSeparator{
 	public:
 		PizzaSeparator(std::vector<std::vector<bool>>* v);
 		~PizzaSeparator();
 		void SlicePizza();
+		Point FindStartingPoint();
 
 	private:
 		std::vector<Point> m_result;
