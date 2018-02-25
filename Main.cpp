@@ -6,4 +6,5 @@
 int main(){
 	PizzaSeparator sep(Parser());
 	sep.SlicePizza();
+	sep.PrintResults();
 }
