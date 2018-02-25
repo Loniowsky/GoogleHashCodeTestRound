@@ -48,7 +48,7 @@ void PizzaSeparator::SlicePizza(){
 				}
 			}
 		}
-		if(actMus!=0 and endP.IsValid() and startingP.IsValid()){
+		if(actMus!=0 and actTom!=0 and endP.IsValid() and startingP.IsValid()){
 			SetTaken();
 			AddToResults();
 		}
@@ -138,11 +138,10 @@ void PizzaSeparator::PrintResults()
 {
 	for (std::vector<std::pair<Point, Point>>::iterator i = m_result.begin(); i!=m_result.end(); ++i)
 	{
-		std::cout<<(*i).first.GetX()<<" ";
-		std::cout<<(*i).second.GetX()<<" ";
 		std::cout<<(*i).first.GetY()<<" ";
-		std::cout<<(*i).second.GetY()<<std::endl;
-
+		std::cout<<(*i).first.GetX()<<" ";
+		std::cout<<(*i).second.GetY()<<" ";
+		std::cout<<(*i).second.GetX()<<std::endl;
 	}
 }
 
@@ -155,11 +154,10 @@ void PizzaSeparator::SaveToFile()
 	outputFile<<m_result.size()<<std::endl;
 	for (std::vector<std::pair<Point, Point>>::iterator i = m_result.begin(); i!=m_result.end(); ++i)
 	{
-		outputFile<<(*i).first.GetX()<<" ";
-		outputFile<<(*i).second.GetX()<<" ";
 		outputFile<<(*i).first.GetY()<<" ";
-		outputFile<<(*i).second.GetY()<<std::endl;
-
+		outputFile<<(*i).first.GetX()<<" ";
+		outputFile<<(*i).second.GetY()<<" ";
+		outputFile<<(*i).second.GetX()<<std::endl;
 	}
 
 }

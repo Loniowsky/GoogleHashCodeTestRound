@@ -11,6 +11,4 @@ extern unsigned max;
 
 std::vector<std::vector<bool>>* Parser ();
 
-
-
 #endif 
