@@ -2,4 +2,3 @@ Test*
 *.o
 *.d
 *.exe
-makefile
