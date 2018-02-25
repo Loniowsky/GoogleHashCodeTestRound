@@ -144,3 +144,18 @@ void PizzaSeparator::PrintResults()
 
 	}
 }
+
+void PizzaSeparator::SaveToFile()
+{
+	std::fstream outputFile ("medium.out");
+	outputFile<<m_result.size()<<std::endl;
+	for (std::vector<std::pair<Point, Point>>::iterator i = m_result.begin(); i!=m_result.end(); ++i)
+	{
+		outputFile<<(*i).first.GetX()<<" ";
+		outputFile<<(*i).second.GetX()<<" ";
+		outputFile<<(*i).first.GetY()<<" ";
+		outputFile<<(*i).second.GetY()<<std::endl;
+
+	}
+
+}

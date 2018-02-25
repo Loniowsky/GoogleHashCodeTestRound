@@ -11,6 +11,7 @@ class PizzaSeparator{
 		~PizzaSeparator();
 		void SlicePizza();
 		void PrintResults();
+		void SaveToFile();
 
 
 	private:
