@@ -21,8 +21,6 @@ void PizzaSeparator::SlicePizza(){
 
 
 	while((startingP=FindStartingPoint()).IsValid()){
-		cout<<"STARTING ";
-		startingP.Print();
 
 		endP=startingP;
 		if((*toSlice)[startingP.GetY()][startingP.GetX()]==0)actTom++;
@@ -31,12 +29,22 @@ void PizzaSeparator::SlicePizza(){
 		while(actTom<::min||actMus<::min){
 			if(!ExpandVertically()){
 				if(!ExpandHorizontally()){
+					if(FieldSize(startingP,endP)<::max){
+						isTaken[startingP.GetY()][startingP.GetX()]=true;
+						break;		
+					}
+				}
+			}if(FieldSize(startingP,endP)>::max){
+				ExpandHorizontally();
+				while(FieldSize(startingP,endP)>::max){
+					DecreaseVertically();
+				}if(FieldSize(startingP,endP)<1){
 					isTaken[startingP.GetY()][startingP.GetX()]=true;
 					break;
 				}
 			}
 		}
-		cout<<actMus<<" "<<actTom<<endl;
+		if(actMus!=0)cout<<actMus<<" "<<actTom<<endl;
 		SetTaken(startingP,endP);
 		actMus=0;
 		actTom=0;
@@ -104,4 +112,12 @@ void PizzaSeparator::SetTaken(Point start, Point end){
 			isTaken[j][i]=1;
 		}
 	}
+}
+
+void  PizzaSeparator::DecreaseVertically(){
+	for(int i = startingP.GetY(); i <= endP.GetY(); ++i){
+		if((*toSlice)[i][endP.GetX()]==0)actTom--;
+		else actMus--;
+	}
+	endP.SetX( endP.GetX() - 1);
 }

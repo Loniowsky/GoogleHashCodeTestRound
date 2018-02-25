@@ -16,6 +16,7 @@ class PizzaSeparator{
 		bool IsValid(const Point& upperLeft, const Point& lowerRight);
 		bool ExpandVertically();
 		bool ExpandHorizontally();
+		void  DecreaseVertically();
 		void SetTaken(Point start, Point end);
 		std::vector<Point> m_result;
 		std::vector<std::vector<bool>> isTaken;
