@@ -15,13 +15,13 @@ class PizzaSeparator{
 
 	private:
 		Point FindStartingPoint();
-		unsigned int FieldSize(Point start, Point end);
+		unsigned int FieldSize();
 		bool IsValid(const Point& upperLeft, const Point& lowerRight);
 		bool ExpandVertically();
 		bool ExpandHorizontally();
 		void  DecreaseVertically();
-		void SetTaken(Point start, Point end);
-		void AddToResults(Point& start, Point& end);
+		void SetTaken();
+		void AddToResults();
 		std::vector<std::pair<Point, Point>> m_result;
 		std::vector<std::vector<bool>> isTaken;
 		std::vector<std::vector<bool>>* toSlice;

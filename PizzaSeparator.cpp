@@ -29,24 +29,28 @@ void PizzaSeparator::SlicePizza(){
 		while(actTom<::min||actMus<::min){
 			if(!ExpandVertically()){
 				if(!ExpandHorizontally()){
-					if(FieldSize(startingP,endP)<::max){
+					if(FieldSize()<::max){
 						isTaken[startingP.GetY()][startingP.GetX()]=true;
 						break;		
 					}
 				}
-			}if(FieldSize(startingP,endP)>::max){
-				ExpandHorizontally();
-				while(FieldSize(startingP,endP)>::max){
+			}if(FieldSize()>=::max){
+				if(!ExpandHorizontally()){
+					isTaken[startingP.GetY()][startingP.GetX()]=true;
+					break;
+				}
+				while(FieldSize()>=::max){
 					DecreaseVertically();
-				}if(FieldSize(startingP,endP)<1){
+				}if(FieldSize()<1){
 					isTaken[startingP.GetY()][startingP.GetX()]=true;
 					break;
 				}
 			}
 		}
-		if(actMus!=0)cout<<actMus<<" "<<actTom<<endl;
-		SetTaken(startingP,endP);
-		AddToResults (startingP, endP);
+		if(actMus!=0 and endP.IsValid() and startingP.IsValid()){
+			SetTaken();
+			AddToResults();
+		}
 		actMus=0;
 		actTom=0;
 	}
@@ -67,6 +71,7 @@ Point PizzaSeparator::FindStartingPoint(){
 
 bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
 {
+	if(lowerRight.GetX()>=rows or lowerRight.GetY()>=columns)return false;
 	for (int i=upperLeft.GetX(); i<=lowerRight.GetX(); ++i)
 	{
 		for (int j=lowerRight.GetY(); j<=upperLeft.GetY(); ++j)
@@ -75,12 +80,11 @@ bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
 				return false;
 		}
 	}
-
 	return true;
 }
 
-unsigned int PizzaSeparator::FieldSize(Point start, Point end){
-	return (end.GetX()-start.GetX()+1)*(end.GetY()-start.GetY()+1);
+unsigned int PizzaSeparator::FieldSize(){
+	return (endP.GetX()-startingP.GetX()+1)*(endP.GetY()-startingP.GetY()+1);
 }
 
 bool PizzaSeparator::ExpandVertically(){
@@ -107,25 +111,25 @@ bool PizzaSeparator::ExpandHorizontally(){
 	return false;
 }
 
-void PizzaSeparator::SetTaken(Point start, Point end){
-	for(int i = start.GetX(); i<=end.GetX() ; i++){
-		for(int j = start.GetY(); j<=end.GetY(); j++){
+void PizzaSeparator::SetTaken(){
+	for(int i = startingP.GetX(); i<=endP.GetX() ; i++){
+		for(int j = startingP.GetY(); j<=endP.GetY(); j++){
 			isTaken[j][i]=1;
 		}
 	}
 }
 
 void PizzaSeparator::DecreaseVertically(){
-	for(int i = startingP.GetY(); i <= endP.GetY(); ++i){
-		if((*toSlice)[i][endP.GetX()]==0)actTom--;
+	for(int i = startingP.GetX(); i <= endP.GetX(); ++i){
+		if((*toSlice)[endP.GetY()][i]==0)actTom--;
 		else actMus--;
 	}
-	endP.SetX( endP.GetX() - 1);
+	endP.SetY( endP.GetY() - 1);
 }
 
-void PizzaSeparator::AddToResults(Point& start, Point& end)
+void PizzaSeparator::AddToResults()
 {
-	auto added = std::make_pair(start, end);
+	auto added = std::make_pair(startingP, endP);
 	m_result.push_back(added);
 }
 
