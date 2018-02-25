@@ -21,20 +21,25 @@ void PizzaSeparator::SlicePizza(){
 
 
 	while((startingP=FindStartingPoint()).IsValid()){
+		cout<<"STARTING ";
+		startingP.Print();
 
 		endP=startingP;
-		if((*toSlice)[startingP.GetY()][startingP.GetX()]==0)actTom++;
-		else actMus++;
+		if(startingP.IsValid()){
+			if((*toSlice)[startingP.GetY()][startingP.GetX()]==0)actTom++;
+			else actMus++;
+		}
 
 		while(actTom<::min||actMus<::min){
 			if(!ExpandVertically()){
 				if(!ExpandHorizontally()){
 					isTaken[startingP.GetY()][startingP.GetX()]=true;
+					break;
 				}
 			}
 		}
 		cout<<actMus<<" "<<actTom<<endl;
-		SetTaken(startingP,endP);
+		if(startingP.IsValid())SetTaken(startingP,endP);
 		actMus=0;
 		actTom=0;
 	}
@@ -47,10 +52,10 @@ PizzaSeparator::~PizzaSeparator(){
 Point PizzaSeparator::FindStartingPoint(){
 	for(unsigned int i = 0; i < rows; ++i){
 		for(unsigned int j = 0 ; j < columns; ++j){
-			if(isTaken[i][j]==0) return Point(j,i);
+			if(isTaken[i][j]==0) return Point(j,i,validity::valid);
 		}
 	}
-	return Point(10000000,1000000);
+	return Point(0,0,validity::notvalid);
 }
 
 bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
@@ -72,7 +77,7 @@ unsigned int PizzaSeparator::FieldSize(Point start, Point end){
 }
 
 bool PizzaSeparator::ExpandVertically(){
-	if(endP.GetY() + 1 < rows and IsValid( Point(startingP.GetX(),endP.GetY()) , Point(endP.GetX() , endP.GetY() + 1) ) ){
+	if(IsValid( Point(startingP.GetX(),endP.GetY()) , Point(endP.GetX() , endP.GetY() + 1) ) and  endP.GetY() + 1 < rows){
 		endP.SetY( endP.GetY() + 1);
 		for(int i = startingP.GetX(); i <= endP.GetX(); ++i){
 			if((*toSlice)[endP.GetY()][i]==0)actTom++;
@@ -84,7 +89,7 @@ bool PizzaSeparator::ExpandVertically(){
 }
 
 bool PizzaSeparator::ExpandHorizontally(){
-	if(endP.GetX() + 1 < columns and IsValid(Point(endP.GetX(),startingP.GetY() ) , Point(endP.GetX() +1 , endP.GetY() ) ) ){
+	if(IsValid(Point(endP.GetX(),startingP.GetY() ) , Point(endP.GetX() +1 , endP.GetY() ) ) and  endP.GetX() + 1 < columns){
 		endP.SetX( endP.GetX() + 1);
 		for(int i = startingP.GetY(); i <= endP.GetY(); ++i){
 			if((*toSlice)[i][endP.GetX()]==0)actTom++;

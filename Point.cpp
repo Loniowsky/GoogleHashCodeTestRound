@@ -4,8 +4,9 @@
 
 using namespace std;
 
+
 bool Point::IsValid(){
-	if(m_x==1000000&&m_y==1000000)return false;
+	if(isValid==validity::notvalid)return false;
 	return true;
 }
 
