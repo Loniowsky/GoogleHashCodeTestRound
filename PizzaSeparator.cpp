@@ -46,6 +46,7 @@ void PizzaSeparator::SlicePizza(){
 		}
 		if(actMus!=0)cout<<actMus<<" "<<actTom<<endl;
 		SetTaken(startingP,endP);
+		AddToResults (startingP, endP);
 		actMus=0;
 		actTom=0;
 	}
@@ -114,10 +115,28 @@ void PizzaSeparator::SetTaken(Point start, Point end){
 	}
 }
 
-void  PizzaSeparator::DecreaseVertically(){
+void PizzaSeparator::DecreaseVertically(){
 	for(int i = startingP.GetY(); i <= endP.GetY(); ++i){
 		if((*toSlice)[i][endP.GetX()]==0)actTom--;
 		else actMus--;
 	}
 	endP.SetX( endP.GetX() - 1);
+}
+
+void PizzaSeparator::AddToResults(Point& start, Point& end)
+{
+	auto added = std::make_pair(start, end);
+	m_result.push_back(added);
+}
+
+void PizzaSeparator::PrintResults() 
+{
+	for (std::vector<std::pair<Point, Point>>::iterator i = m_result.begin(); i!=m_result.end(); ++i)
+	{
+		std::cout<<(*i).first.GetX()<<" ";
+		std::cout<<(*i).second.GetX()<<" ";
+		std::cout<<(*i).first.GetY()<<" ";
+		std::cout<<(*i).second.GetY()<<std::endl;
+
+	}
 }

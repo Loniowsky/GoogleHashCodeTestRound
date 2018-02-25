@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <utility>
 #include "Point.h"
 #include "enum.h"
 
@@ -9,6 +10,8 @@ class PizzaSeparator{
 		PizzaSeparator(std::vector<std::vector<bool>>* v);
 		~PizzaSeparator();
 		void SlicePizza();
+		void PrintResults();
+
 
 	private:
 		Point FindStartingPoint();
@@ -18,7 +21,8 @@ class PizzaSeparator{
 		bool ExpandHorizontally();
 		void  DecreaseVertically();
 		void SetTaken(Point start, Point end);
-		std::vector<Point> m_result;
+		void AddToResults(Point& start, Point& end);
+		std::vector<std::pair<Point, Point>> m_result;
 		std::vector<std::vector<bool>> isTaken;
 		std::vector<std::vector<bool>>* toSlice;
 		Point startingP;
