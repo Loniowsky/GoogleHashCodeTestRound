@@ -20,7 +20,7 @@ class PizzaSeparator{
 		bool IsValid(const Point& upperLeft, const Point& lowerRight);
 		bool ExpandVertically();
 		bool ExpandHorizontally();
-		void  DecreaseVertically();
+		void DecreaseVertically();
 		void SetTaken();
 		void AddToResults();
 		std::vector<std::pair<Point, Point>> m_result;

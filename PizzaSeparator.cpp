@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "Point.h"
 #include "Parser.h"
 
@@ -147,10 +148,12 @@ void PizzaSeparator::PrintResults()
 
 void PizzaSeparator::SaveToFile()
 {
-	std::ofstream outputFile;
-	outputFile.open("medium.out");
+	std::ofstream outputFile("medium.out");;
 	if (!outputFile.is_open())
+	{
 		std::cout<<"Could not open a file"<<std::endl;
+		exit(-1);
+	}
 	outputFile<<m_result.size()<<std::endl;
 	for (std::vector<std::pair<Point, Point>>::iterator i = m_result.begin(); i!=m_result.end(); ++i)
 	{
