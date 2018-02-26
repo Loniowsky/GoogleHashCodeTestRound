@@ -77,7 +77,7 @@ bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
 	{
 		for (int j=lowerRight.GetY(); j<=upperLeft.GetY(); ++j)
 		{
-			if (isTaken[i][j]==true)
+			if (isTaken[j][i]==true)
 				return false;
 		}
 	}
