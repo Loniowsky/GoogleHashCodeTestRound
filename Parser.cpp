@@ -16,7 +16,7 @@ unsigned max = 0;
 
 std::vector<std::vector<bool>>* Parser ()
 {
-	std::ifstream inputFile ("example.in");
+	std::ifstream inputFile ("small.in");
 	if (!inputFile.is_open())
 	{
 		std::cerr<<"Could not open file. Exiting"<<std::endl;
@@ -67,7 +67,7 @@ std::vector<std::vector<bool>>* Parser ()
 		//std::cout<<std::endl;
 	}
 
-	PrintVector(*ptrToVector, rows, columns);
+	//PrintVector(*ptrToVector, rows, columns);
 
 	return ptrToVector;
 	
