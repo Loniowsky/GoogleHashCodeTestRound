@@ -28,6 +28,6 @@ class PizzaSeparator{
 		std::vector<std::vector<bool>>* toSlice;
 		Point startingP;
 		Point endP;
-		int actTom=0;
-		int actMus=0;
+		unsigned int actTom=0;
+		unsigned int actMus=0;
 };

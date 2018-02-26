@@ -5,8 +5,8 @@
 class Point{
 public:
 	Point(unsigned int x = 0, unsigned int y = 0, validity v = validity::valid):isValid(v),m_x(x),m_y(y){};
-	int GetX() const {return m_x;}
-	int GetY() const {return m_y;}
+	unsigned int GetX() const {return m_x;}
+	unsigned int GetY() const {return m_y;}
 	bool IsValid();
 	void Print();
 	void SetX(const unsigned int x);

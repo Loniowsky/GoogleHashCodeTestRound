@@ -73,9 +73,9 @@ Point PizzaSeparator::FindStartingPoint(){
 bool PizzaSeparator::IsValid(const Point& upperLeft, const Point& lowerRight)
 {
 	if(lowerRight.GetX()>=rows or lowerRight.GetY()>=columns)return false;
-	for (int i=upperLeft.GetX(); i<=lowerRight.GetX(); ++i)
+	for (unsigned int i=upperLeft.GetX(); i<=lowerRight.GetX(); ++i)
 	{
-		for (int j=lowerRight.GetY(); j<=upperLeft.GetY(); ++j)
+		for (unsigned int j=lowerRight.GetY(); j<=upperLeft.GetY(); ++j)
 		{
 			if (isTaken[i][j]==true)
 				return false;
@@ -91,7 +91,7 @@ unsigned int PizzaSeparator::FieldSize(){
 bool PizzaSeparator::ExpandVertically(){
 	if(IsValid( Point(startingP.GetX(),endP.GetY()) , Point(endP.GetX() , endP.GetY() + 1) ) and  endP.GetY() + 1 < rows){
 		endP.SetY( endP.GetY() + 1);
-		for(int i = startingP.GetX(); i <= endP.GetX(); ++i){
+		for(unsigned int i = startingP.GetX(); i <= endP.GetX(); ++i){
 			if((*toSlice)[endP.GetY()][i]==0)actTom++;
 			else actMus++;
 		}
@@ -103,7 +103,7 @@ bool PizzaSeparator::ExpandVertically(){
 bool PizzaSeparator::ExpandHorizontally(){
 	if(IsValid(Point(endP.GetX(),startingP.GetY() ) , Point(endP.GetX() +1 , endP.GetY() ) ) and  endP.GetX() + 1 < columns){
 		endP.SetX( endP.GetX() + 1);
-		for(int i = startingP.GetY(); i <= endP.GetY(); ++i){
+		for(unsigned int i = startingP.GetY(); i <= endP.GetY(); ++i){
 			if((*toSlice)[i][endP.GetX()]==0)actTom++;
 			else actMus++;
 		}
@@ -113,15 +113,15 @@ bool PizzaSeparator::ExpandHorizontally(){
 }
 
 void PizzaSeparator::SetTaken(){
-	for(int i = startingP.GetX(); i<=endP.GetX() ; i++){
-		for(int j = startingP.GetY(); j<=endP.GetY(); j++){
+	for(unsigned int i = startingP.GetX(); i<=endP.GetX() ; i++){
+		for(unsigned int j = startingP.GetY(); j<=endP.GetY(); j++){
 			isTaken[j][i]=1;
 		}
 	}
 }
 
 void PizzaSeparator::DecreaseVertically(){
-	for(int i = startingP.GetX(); i <= endP.GetX(); ++i){
+	for(unsigned int i = startingP.GetX(); i <= endP.GetX(); ++i){
 		if((*toSlice)[endP.GetY()][i]==0)actTom--;
 		else actMus--;
 	}
