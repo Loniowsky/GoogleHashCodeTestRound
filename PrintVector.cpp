@@ -8,7 +8,7 @@ void PrintVector (std::vector<std::vector<bool>>& printed, unsigned rows, unsign
 	{
 		for (unsigned j=0; j<columns; j++)
 		{
-			std::cout<<printed[i][j];
+			std::cout<<printed[j][i];
 		}
 		std::cout<<std::endl;
 	}

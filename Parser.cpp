@@ -16,7 +16,7 @@ unsigned max = 0;
 
 std::vector<std::vector<bool>>* Parser ()
 {
-	std::ifstream inputFile ("medium.in");
+	std::ifstream inputFile ("example.in");
 	if (!inputFile.is_open())
 	{
 		std::cerr<<"Could not open file. Exiting"<<std::endl;
@@ -44,25 +44,30 @@ std::vector<std::vector<bool>>* Parser ()
 	auto ptrToVector = new std::vector<std::vector<bool>>;
 	char ingredient;
 
+
+	for (unsigned i=0; i<columns; ++i)
+	{
+		ptrToVector->emplace_back();
+	}
+
 	for (unsigned i=0; i<rows; ++i)
 	{
 		getline (inputFile, pizzaRow);
-		ptrToVector->emplace_back();
 		for (unsigned j=0; j<columns; ++j)
 		{
 			ingredient = pizzaRow.at(0);
 			pizzaRow.erase(0,1);
 			//std::cout<<ingredient;
 			if (ingredient=='T')
-				ptrToVector->at(i).push_back(false);
+				ptrToVector->at(j).push_back(false);
 			else
-				ptrToVector->at(i).push_back(true);
+				ptrToVector->at(j).push_back(true);
 
 		}
 		//std::cout<<std::endl;
 	}
 
-	//PrintVector(*ptrToVector, rows, columns);
+	PrintVector(*ptrToVector, rows, columns);
 
 	return ptrToVector;
 	
