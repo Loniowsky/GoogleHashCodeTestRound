@@ -113,8 +113,8 @@ bool PizzaSeparator::ExpandHorizontally(){
 }
 
 void PizzaSeparator::SetTaken(){
-	for(unsigned int i = startingP.GetX(); i<=endP.GetX() ; i++){
-		for(unsigned int j = startingP.GetY(); j<=endP.GetY(); j++){
+	for(unsigned int i = startingP.GetX(); i<=endP.GetX() ; ++i){
+		for(unsigned int j = startingP.GetY(); j<=endP.GetY(); ++j){
 			isTaken[j][i]=1;
 		}
 	}
