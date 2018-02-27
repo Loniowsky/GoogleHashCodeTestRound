@@ -40,3 +40,5 @@ class:
 	touch $$name.h; \
 	printf "#pragma once\n\nclass "$$name"{\npublic:\n\nprivate:\n\n};\n" > $$name.h
 
+pack:
+	zip Google *.cpp *.h Makefile
