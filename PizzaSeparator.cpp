@@ -20,7 +20,7 @@ PizzaSeparator::PizzaSeparator(std::vector<std::vector<bool>>* v){
 }
 
 void PizzaSeparator::SlicePizza(){
-
+	int counter=0;
 
 	while((startingP=FindStartingPoint()).IsValid()){
 
@@ -68,29 +68,25 @@ void PizzaSeparator::SlicePizza(){
 					break;
 				}
 			}
-			if(FieldSize()>::max)ExpandHorizontally();
-			while(FieldSize()>::max)DecreaseVertically();
+			if(FieldSize()>=::max){
+				if(!ExpandHorizontally()){
+					isTaken[startingP.GetX()][startingP.GetY()]=true;
+					break;
+				}
+			}
+			while(FieldSize()>=::max)DecreaseVertically();
 			if(FieldSize()<=1){
 				isTaken[startingP.GetX()][startingP.GetY()]=true;
 				break;
 			}
 		}
 
-		if(actMus!=0 and actTom!=0 and endP.IsValid() and startingP.IsValid()){
-			/*for (unsigned int i=startingP.GetX(); i<=endP.GetX(); ++i)
-			{
-				for (unsigned int j=startingP.GetY(); j<=endP.GetY(); ++j)
-				{
-					cout<<(*toSlice)[i][j]<<" ";
-				}
-				cout<<endl;
-			}*/
-			//cout<<actMus<<" "<<actTom<<endl;
-			//cout<<endl;
+		if(actMus>=::min and actTom>=::min and endP.IsValid() and startingP.IsValid()){
 			SetTaken();
 			AddToResults();
+			counter++;
 		}
-
+		if(counter%500==0)cout<<counter<<endl;
 		actMus=0;
 		actTom=0;
 	}
@@ -186,7 +182,7 @@ void PizzaSeparator::PrintResults()
 
 void PizzaSeparator::SaveToFile()
 {
-	std::ofstream outputFile("medium.out");;
+	std::ofstream outputFile("big.out");;
 	if (!outputFile.is_open())
 	{
 		std::cout<<"Could not open a file"<<std::endl;
