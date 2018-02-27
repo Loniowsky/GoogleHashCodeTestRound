@@ -77,16 +77,16 @@ void PizzaSeparator::SlicePizza(){
 		}
 
 		if(actMus!=0 and actTom!=0 and endP.IsValid() and startingP.IsValid()){
-			for (unsigned int i=startingP.GetX(); i<=endP.GetX(); ++i)
+			/*for (unsigned int i=startingP.GetX(); i<=endP.GetX(); ++i)
 			{
 				for (unsigned int j=startingP.GetY(); j<=endP.GetY(); ++j)
 				{
 					cout<<(*toSlice)[i][j]<<" ";
 				}
 				cout<<endl;
-			}
-			cout<<actMus<<" "<<actTom<<endl;
-			cout<<endl;
+			}*/
+			//cout<<actMus<<" "<<actTom<<endl;
+			//cout<<endl;
 			SetTaken();
 			AddToResults();
 		}
@@ -161,7 +161,7 @@ void PizzaSeparator::SetTaken(){
 
 void PizzaSeparator::DecreaseVertically(){
 	for(unsigned int i = startingP.GetX(); i <= endP.GetX(); ++i){
-		if((*toSlice)[endP.GetY()][i]==0)actTom--;
+		if((*toSlice)[i][endP.GetY()]==0)actTom--; ///HERE !!!!! TU BYLO if((*toSlice)[endP.GetY()][i]==0)actTom--;
 		else actMus--;
 	}
 	endP.SetY( endP.GetY() - 1);

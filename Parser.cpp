@@ -16,7 +16,7 @@ unsigned max = 0;
 
 std::vector<std::vector<bool>>* Parser ()
 {
-	std::ifstream inputFile ("small.in");
+	std::ifstream inputFile ("medium.in");
 	if (!inputFile.is_open())
 	{
 		std::cerr<<"Could not open file. Exiting"<<std::endl;
