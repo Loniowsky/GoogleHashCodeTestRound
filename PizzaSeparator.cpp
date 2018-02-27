@@ -63,18 +63,18 @@ void PizzaSeparator::SlicePizza(){
 		while(actTom<::min or actMus<::min or FieldSize()>::max){ //dopoki field size za duzy lub nie mamy odpowiedniej ilosci skladnikow cos robimy
 			if(ExpandVertically());
 			else if(!ExpandHorizontally()){
-				if(FieldSize()<::max){
+				if(FieldSize()<=::max){
 					isTaken[startingP.GetX()][startingP.GetY()]=true;
 					break;
 				}
 			}
-			if(FieldSize()>=::max){
+			if(FieldSize()>::max){
 				if(!ExpandHorizontally()){
 					isTaken[startingP.GetX()][startingP.GetY()]=true;
 					break;
 				}
 			}
-			while(FieldSize()>=::max)DecreaseVertically();
+			while(FieldSize()>::max)DecreaseVertically();
 			if(FieldSize()<=1){
 				isTaken[startingP.GetX()][startingP.GetY()]=true;
 				break;
@@ -182,7 +182,7 @@ void PizzaSeparator::PrintResults()
 
 void PizzaSeparator::SaveToFile()
 {
-	std::ofstream outputFile("big.out");;
+	std::ofstream outputFile("medium.out");;
 	if (!outputFile.is_open())
 	{
 		std::cout<<"Could not open a file"<<std::endl;
