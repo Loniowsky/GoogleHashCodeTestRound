@@ -24,43 +24,11 @@ void PizzaSeparator::SlicePizza(){
 
 	while((startingP=FindStartingPoint()).IsValid()){
 
-		/*endP=startingP;
-		if((*toSlice)[startingP.GetX()][startingP.GetY()]==0)actTom++;
-		else actMus++;
-
-		while((actTom<::min or actMus<::min) or FieldSize()<=::max){
-			if(!ExpandVertically()){
-				if(!ExpandHorizontally()){
-					if(FieldSize()<::max){
-						isTaken[startingP.GetX()][startingP.GetY()]=true;
-						break;		
-					}
-				}
-			}else if(FieldSize()>=::max){
-				if(!ExpandHorizontally()){
-					isTaken[startingP.GetX()][startingP.GetY()]=true;
-					break;
-				}
-				while(FieldSize()>=::max){
-					DecreaseVertically();
-				}if(FieldSize()<1){
-					isTaken[startingP.GetX()][startingP.GetY()]=true;
-					break;
-				}
-			}
-		}
-		if(actMus!=0 and actTom!=0 and endP.IsValid() and startingP.IsValid()){
-			SetTaken();
-			AddToResults();
-		}
-		actMus=0;
-		actTom=0;*/
-
 		endP=startingP;
 		if((*toSlice)[startingP.GetX()][startingP.GetY()])actMus++;
 		else actTom++;
 
-		while(actTom<::min or actMus<::min or FieldSize()>::max){ //dopoki field size za duzy lub nie mamy odpowiedniej ilosci skladnikow cos robimy
+		while(actTom<::min or actMus<::min or FieldSize()>::max){
 			if(ExpandVertically());
 			else if(!ExpandHorizontally()){
 				if(FieldSize()<=::max){
@@ -157,7 +125,7 @@ void PizzaSeparator::SetTaken(){
 
 void PizzaSeparator::DecreaseVertically(){
 	for(unsigned int i = startingP.GetX(); i <= endP.GetX(); ++i){
-		if((*toSlice)[i][endP.GetY()]==0)actTom--; ///HERE !!!!! TU BYLO if((*toSlice)[endP.GetY()][i]==0)actTom--;
+		if((*toSlice)[i][endP.GetY()]==0)actTom--; 
 		else actMus--;
 	}
 	endP.SetY( endP.GetY() - 1);
