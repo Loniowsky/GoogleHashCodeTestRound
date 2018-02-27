@@ -81,7 +81,7 @@ void PizzaSeparator::SlicePizza(){
 			}
 		}
 
-		if(actMus>=::min and actTom>=::min and endP.IsValid() and startingP.IsValid()){
+		if(actMus>=::min and actTom>=::min and endP.IsValid() and startingP.IsValid() and FieldSize()<=::max){
 			SetTaken();
 			AddToResults();
 			counter++;
