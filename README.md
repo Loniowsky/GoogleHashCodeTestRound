@@ -1,11 +1,13 @@
 This is our solution to Google Hash Code (2018) - Test Round
 
+Copyright (c) 2018 Jarosław Cierpich & Arkadiusz Kasprzak
+
 Our Results:
 
-- Example: 10 pts
-- Small: 38 pts
-- Medium: 49226 pts
-- Big: 893840 pts
+- Example: 10 pts (3x5 input)
+- Small: 38 pts (6x7 input)
+- Medium: 49226 pts (200x250 input)
+- Big: 893840 pts (1000x1000 input)
 
 Problem Statement:
 
