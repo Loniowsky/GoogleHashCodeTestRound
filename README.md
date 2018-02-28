@@ -27,6 +27,7 @@ The slices we want to cut out must contain at least L cells of each ingredient (
 mushroom and at least L cells of tomato) and at most H cells of any kind in total - surprising as it is, there is
 such a thing as too much pizza in one slice.
 The slices being cut out cannot overlap. The slices being cut do not need to cover the entire pizza.
+
 Goal
 
 The goal is to cut correct slices out of the pizza maximizing the total number of cells in all slices.
